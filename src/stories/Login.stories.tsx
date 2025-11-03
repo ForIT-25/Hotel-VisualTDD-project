@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Login } from "../components/Login";
 
 const meta: Meta<typeof Login> = {
-  title: "Auth/Login",
+  title: "Components/Login",
   component: Login,
   args: {
     onSubmit: (data) => console.log("Login:", data),
