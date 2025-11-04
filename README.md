@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# Sistema de Gestión Hotelera
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación para la administración de hoteles desarrollada con **React**, **Vite**, **Tailwind CSS**, **TypeScript** y **Storybook**.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Autenticación**: Login y registro de usuarios
+- **Gestión de Hoteles**: Visualización de hoteles disponibles
+- **Reservas**: Sistema de reservas de habitaciones
+- **Panel de Usuario**: Visualización de reservas propias
+- **Panel de Administración**: Gestión de hoteles, habitaciones y reservas
+- **Storybook**: Documentación de componentes
 
-## React Compiler
+## Tecnologías
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 18
+- TypeScript 5
+- Tailwind CSS 3
+- Storybook 7
+- Vite 5
 
-## Expanding the ESLint configuration
+## Instalación
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# Instalar dependencias
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Iniciar en modo desarrollo
+npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# Iniciar Storybook
+npm run storybook
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build para producción
+npm run build
+
+# Build de Storybook
+npm run build-storybook
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Estructura del Proyecto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── assets/
+├── components/
+│   ├── Login.tsx
+│   ├── Register.tsx
+│   ├── HotelList.tsx
+│   ├── HotelCard.tsx
+│   ├── Navbar.tsx
+│   ├── MyReservations.tsx
+│   └── AdminPanel.tsx
+├── pages/
+│   └── HomePage.tsx
+├── services/
+│   └── api.tsx
+├── stories/
+│   ├── Login.stories.tsx
+│   ├── Register.stories.tsx
+│   ├── HotelList.stories.tsx
+│   ├── HotelCard.stories.tsx
+│   ├── Navbar.stories.tsx
+│   ├── MyReservations.stories.tsx
+│   └── AdminPanel.stories.tsx
+├── App.tsx
+└── main.tsx
 ```
