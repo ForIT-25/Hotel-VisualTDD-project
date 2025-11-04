@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type LoginProps = {
+export type LoginProps = {
   loading?: boolean;
   error?: string;
   onSubmit: (data: { email: string; password: string }) => void;

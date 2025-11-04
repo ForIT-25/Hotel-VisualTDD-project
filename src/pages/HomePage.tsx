@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar } from '../components/Navbar';
+import { Navbar, type NavbarProps } from '../components/Navbar';
 import { HotelList } from '../components/HotelList';
 import type { Hotel } from '../components/HotelCard'; 
 
-// --- Simulación de Datos ---
 const mockHotels: Hotel[] = [
   { 
     id: '1',
@@ -28,25 +27,26 @@ const mockHotels: Hotel[] = [
   },
 ];
 
-export const HomePage: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); 
+export const HomePage: React.FC<NavbarProps> = ({
+    appName,
+    isLoggedIn,
+    userName,
+    onLogin,
+    onLogout,
+    onNavigateToProfile,
+}) => {
   const [hotels, setHotels] = useState<Hotel[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | undefined>(undefined);
 
   useEffect(() => {
+    setLoading(true);
     setTimeout(() => {
       setHotels(mockHotels);
       setLoading(false);
+      //setError('Fallo la conexión con el servidor');
     }, 1000);
   }, []);
-
-  const handleLogin = () => setIsLoggedIn(true);
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    alert('Sesión cerrada');
-  };
-  const handleNavigateToProfile = () => alert('Navegando a Perfil');
 
   const handleSelectHotel = (hotelId: string) => {
     const hotel = hotels?.find(h => h.id === hotelId);
@@ -56,12 +56,12 @@ export const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar
-        appName="MiAppHoteles"
+        appName={appName}
         isLoggedIn={isLoggedIn}
-        userName="Usuario Demo"
-        onLogin={handleLogin}
-        onLogout={handleLogout}
-        onNavigateToProfile={handleNavigateToProfile}
+        userName={userName}
+        onLogin={onLogin}
+        onLogout={onLogout}
+        onNavigateToProfile={onNavigateToProfile}
       />
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-extrabold text-gray-900 mb-4 px-6">
